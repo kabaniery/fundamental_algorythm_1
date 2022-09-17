@@ -36,7 +36,6 @@ int strToDouble(char val[], double *number) {
                 counter++;
             }
         } else {
-            printf("%c\n", val[i]);
             return -1;
         }
     }
