@@ -4,12 +4,30 @@
 
 void getX(double a, double b, double c) {
     double d = b*b - 4*a*c;
-    if (d > 0) {
-        printf("for a = %f, b = %f, c = %f x1 is %f and x2 is %f\n", a, b, c, (-1*b + sqrt(d))/(2*a), (-1*b - sqrt(d))/(2*a));
-    } else if (d == 0) {
-        printf("for a = %f, b = %f, c = %f x1 is %f\n", a, b, c, (-1*b)/(2*a));
-    } else {
+    if (a == 0 && b != 0) {
+        if (-1*c/b == 0) {
+            printf("for a = %f, b = %f, c = %f x1 is 0\n", a, b, c);
+        } else {
+            printf("for a = %f, b = %f, c = %f x1 is %f\n", a, b, c, -1 * c / b);
+        }
+    } else if (a == 0){
         printf("for a = %f, b = %f, c = %f there is no solutions\n", a, b, c);
+    } else {
+        if (d > 0) {
+            printf("for a = %f, b = %f, c = %f x1 is %f and x2 is %f\n", a, b, c, (-1 * b + sqrt(d)) / (2 * a),
+                   (-1 * b - sqrt(d)) / (2 * a));
+            if ((-1 * b + sqrt(d)) / (2 * a) == 0 || (-1 * b - sqrt(d)) / (2 * a) == 0) {
+                printf("Pozhaluysta ne ubivayte za -0.000...; eto ne ya, eto c s ego otobrazheniem double\n");
+            }
+        } else if (d == 0) {
+            if ((-1 * b ) / (2 * a) == 0) {
+                printf("for a = %f, b = %f, c = %f x1 is 0\n", a, b, c);
+            } else {
+                printf("for a = %f, b = %f, c = %f x1 is %f\n", a, b, c, (-1 * b) / (2 * a));
+            }
+        } else {
+            printf("for a = %f, b = %f, c = %f there is no solutions\n", a, b, c);
+        }
     }
 }
 
