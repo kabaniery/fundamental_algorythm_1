@@ -23,6 +23,9 @@ int generateRandomMass(int mass[], int count, int minimumValue, int maximumValue
 }
 
 int **createMatrix(int m, int n, int isRandom) {
+    if (m <= 0 || n <= 0) {
+        return NULL;
+    }
     int **matrix = malloc(m*sizeof(int *));
     for (int M = 0; M < m; M++) {
         matrix[M] = malloc(n*sizeof(int));
@@ -71,6 +74,7 @@ int **multiplyMatrix(int *matrix1[], int *matrix2[], int l, int m, int n) {
 }
 
 int getDefinition(int *matrix[], int n) {
+
     if (n == 1) {
         return matrix[0][0];
     } else if (n == 2) {
