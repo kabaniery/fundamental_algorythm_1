@@ -14,6 +14,9 @@ int isDigit(int len, char str[])
             return -1;
         }
     }
+    if (result == 0) {
+        return -1;
+    }
     return result;
 }
 
@@ -34,10 +37,14 @@ int main(int argc, char *argv[]) {
         }
         if (strcmp(argv[2], "-h") == 0 || strcmp(argv[2],"/h") == 0) {
             //Вывести числа в пределах ста, кратные ввёденному. Отсутствие их обработать
-            if (number > 50) {
+            if (number > 100) {
                 printf("There are no multiples of this\n");
             } else {
-                for (int i = 1; i <= 100/number; i++) {
+                if (number == 0) {
+                    printf("There are no multiples of this\n");
+                    return 0;
+                }
+                for (int i = 1; i <= (int)floor(100/number); i++) {
                     printf("%d ", number * i);
                 }
                 printf("\n");
@@ -63,8 +70,13 @@ int main(int argc, char *argv[]) {
             }
         } else if (strcmp(argv[2], "-s") == 0 || strcmp(argv[2], "/s") == 0) {
             //Вывести все цифры числа через пробел
-            for (int i = 0; i < strlen(argv[1]); i++) {
+            int i = 0;
+            while (1) {
+                if (argv[1][i] == 0) {
+                    break;
+                }
                 printf("%c ", argv[1][i]);
+                i++;
             }
             printf("\n");
         } else if (strcmp(argv[2], "-e") == 0 || strcmp(argv[2], "/e") == 0) {
